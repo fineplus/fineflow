@@ -41,6 +41,8 @@ class FlowServerModel {
 
   async all() {
     const res = await this.model.all();
+    console.log(res)
+    res.data.items.forEach(item => item.enable=JSON.parse(item.enable))
     return { state: 1, data: res.data.items, msg: "" };
   }
 

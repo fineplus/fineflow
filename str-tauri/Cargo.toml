@@ -1,8 +1,8 @@
 [package]
 name = "fineflow"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "fineflow"
+authors = ["fine"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -34,3 +34,12 @@ tauri-plugin-global-shortcut = "2.0.0-rc.1"
 tauri-plugin-positioner = "2.0.0-rc.1"
 tauri-plugin-single-instance = "2.0.0-rc"
 
+[profile.dev]
+incremental = true # Compile your binary in smaller steps.
+
+[profile.release]
+codegen-units = 1 # Allows LLVM to perform better optimization.
+lto = true # Enables link-time-optimizations.
+opt-level = "s" # Prioritizes small binary size. Use `3` if you prefer speed.
+panic = "abort" # Higher performance by disabling panic handlers.
+strip = true # Ensures debug symbols are removed.
