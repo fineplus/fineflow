@@ -1,0 +1,32 @@
+.float-menu {
+    background: #383746;
+    border: 2px solid rgb(112 104 104 / 19%);
+
+    //每个第一级div下的第一个div是标题
+    div>div:first-of-type {
+        font-size: 0.8rem;
+        min-width: 8rem;
+        background: #272733;
+        color: rgb(206 207 222 / 86%);
+        @apply px-3 py-1 font-bold select-none;
+    }
+
+    //每个第一级div下的除了第一个div的div是选项
+    div>div:not(:first-child) {
+        font-size: 0.8rem;
+        color: #c6c6d1;
+        opacity: 0.9;
+        cursor: pointer;
+        @apply px-3 py-1 font-bold;
+
+        &:hover {
+            background: #4c4b60;
+            color: white;
+        }
+    }
+
+    //每个第一级div下的除了第一个div和最后一个div的div都有下边框
+    div>div:not(:first-child):not(:last-child) {
+        border-bottom: 1px solid rgba(125, 122, 122, 0.36);
+    }
+}
