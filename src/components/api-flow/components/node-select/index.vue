@@ -771,7 +771,7 @@ const flowServers = ref<FlowServerModelType[]>([])
 
 async function getAllServerNodes() {
   if (!localStorage.getItem('useWebDb')) {
-    getNodeTreeFromServer("", (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8021') + "/fineflow/plugins")
+    // getNodeTreeFromServer("", (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8021') + "/fineflow/plugins")
   }
   flowServerModel.all().then(res => {
     if (res.state) {
