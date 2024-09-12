@@ -1,0 +1,5 @@
+/* 样式抽离 */
+:root{
+    --f-node-select_shadow:0px 1px 4px rgb(64 60 87);
+    --f-node-unselect_shadow:0px 1px 4px rgba(0, 0, 0, 0.5);
+}

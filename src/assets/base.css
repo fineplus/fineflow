@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+
+    .flex-c {
+        @apply flex flex-col justify-center items-center;
+    }
+
+    @media (min-width: 1536px) {
+        .container {
+            max-width: 1280px;
+        }
+    }
+
+}
+
+body {
+    overflow: hidden;
+}
+
+.el-popper{
+    white-space: pre-wrap;
+}
+
+#app{
+    --el-bg-color:#18191e;
+    --el-color-primary-dark-2: #514d9a;
+    --el-color-primary: #605cb9;
+    --el-color-primary-light-3: #736ee0;
+    --el-color-primary-light-9: #2b2b3c8c;
+    --el-color-primary-light-7: #40386d;
+}
+
+/* 在特定元素下自定义滚动条的样式 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px; /* 设置滚动条的宽度 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+   background-color: #79798b;
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #222228; /* 设置滚动条的轨道颜色 */
+}
+
+
+.node-graph {
+    position: relative;
+    color: #ecedff91;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    overflow: visible;
+    @apply w-auto ;
+    background: rgba(47, 47, 58, 1);
+}
+
+.node-top {
+    background: rgba(64, 64, 79, 1);
+    font-size: 0.8rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    color: #f0f8ffd1;
+    @apply w-full px-2 py-1  flex flex-row flex-c z-20;
+}
+
+
+.state-circle {
+    border-radius: 50%;
+    cursor: pointer;
+    @apply w-3 h-3 ml-auto;
+}
+
+.node-content {
+    @apply z-10 px-2 py-[6px] cursor-default flex flex-col;
+}
+
+.resize-tool {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    border-radius: 16px;
+    background: aliceblue;
+    width: 16px;
+    height: 16px;
+    cursor: nw-resize;
+    @apply absolute overflow-hidden opacity-0;
+}
+
+.input-param-item {
+    min-height: 2rem;
+    height: fit-content;
+    padding: 0.25rem 0;
+    @apply flex items-center;
+}
+
+.node-component {
+    @apply flex-1 overflow-auto;
+}
+
+.node-param-body .el-switch {
+    --el-switch-off-color: rgb(105 105 138 / 48%);
+    --el-switch-on-color: #7868db !important;
+}
+
+.node-param-body {
+    --el-fill-color-blank: #40404f;
+    --el-text-color-regular: #e5e5e5;
+    --el-disable-color: #353541;
+    --el-border-color: rgba(58, 58, 64, 0.48);
+    --el-switch-off-color: rgb(105 105 138 / 48%);
+    --el-switch-on-color: #7868db;
+}
+
+.el-select{
+    max-width:12rem;
+}
