@@ -39,7 +39,7 @@ import type {
 import type { Options as GraphOptions } from "@antv/x6/src/graph/options";
 import { computed, type ComputedRef, h, reactive, type Ref, render } from "vue";
 import { EventEmitter } from "eventemitter3";
-import { configStore, flowServerStore, systemConfigStore } from "@/components/api-flow/engine/store";
+import {configStore, flowServerStore, getSystemConfig, systemConfigStore} from "@/components/api-flow/engine/store";
 import type { FlowServerModelType } from "@/api/database/db/server";
 import { StateSync } from "@/components/api-flow/engine/state-sync";
 // import {ElMessage} from "element-plus";
@@ -893,13 +893,8 @@ class FlowEditor {
             this.render.setEdgeState(edgeId, state);
         };
         //增加配置获取功能
-        api.post(window.apiUrl + '/fineflow/config/get', {}).then(res => {
-            systemConfigStore.value = res.data
-            //@ts-ignore
-            window.systemConfigStore = systemConfigStore
-        }).catch(e => {
-            console.warn(e)
-        })
+        getSystemConfig()
+
         console.log(this.render.graph);
     }
 

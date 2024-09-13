@@ -195,9 +195,9 @@
         <el-tab-pane label="系统配置" name="systemSetting" style="height: 100%">
           <system-setting style="height: 100%;"></system-setting>
         </el-tab-pane>
-        <el-tab-pane label="数据管理" name="dataManage" style="height: 100%">
-          <data-manage @refresh_nodes="getNodeTree" style="height: 100%;"></data-manage>
-        </el-tab-pane>
+<!--        <el-tab-pane label="数据管理" name="dataManage" style="height: 100%">-->
+<!--          <data-manage @refresh_nodes="getNodeTree" style="height: 100%;"></data-manage>-->
+<!--        </el-tab-pane>-->
       </el-tabs>
     </el-dialog>
     <div class="absolute rounded overflow-hidden shadow-xl float-menu" @mouseleave="() => floatMenu.visible = false"
