@@ -9,7 +9,7 @@
       </el-form>
     </div>
     <div class="flex">
-      <el-button @click="update" size="small" class="ml-auto" type="primary">
+      <el-button @click="updateSystemConfig" size="small" class="ml-auto" type="primary">
         保存
       </el-button>
     </div>
@@ -20,25 +20,15 @@
 import {onMounted, ref} from "vue";
 import type {SystemConfig} from "@/components/api-flow/engine/types";
 import {api} from "@/api/api";
-import {systemConfigStore} from "@/components/api-flow/engine/store";
+import {getSystemConfig, systemConfigStore,updateSystemConfig} from "@/components/api-flow/engine/store";
 import {ElMessage} from "element-plus";
+import {allDb} from "@/utils/loadDb";
 
 
-function update() {
-  api.post("/fineflow/config/update", systemConfigStore.value).then(res => {
-    systemConfigStore.value = res.data
-    ElMessage.success('保存成功')
-  }).catch(e => {
-    console.warn(e)
-  })
-}
 
-onMounted(() => {
-  api.post("/fineflow/config/get", {}).then(res => {
-    systemConfigStore.value = res.data
-  }).catch(e => {
-    console.warn(e)
-  })
+
+onMounted( () => {
+  getSystemConfig()
 })
 </script>
 <style scoped lang="scss">
