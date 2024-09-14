@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import {onBeforeMount, onMounted, ref} from "vue";
+import {locales} from "@/locale";
+import {useI18n} from "vue-i18n";
+const t = useI18n()
 // import AceCodeEditor from "@/components/api-flow/components/node-editor/components/ace-code-editor.vue";
-
+locales.t = t.t
+console.log(t.locale.value,'t.locale.value')
 onBeforeMount(async () => {
+  t.locale.value=localStorage.getItem('locale')||'zh'
 })
 const code = ref('')
 </script>

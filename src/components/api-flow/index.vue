@@ -192,6 +192,7 @@ import {copy, generateID, loadJsonFile, saveJsonToFile} from "@/components/api-f
 import {makePortId, parsePortId, sleep} from "@/components/api-flow/engine/utils";
 import {ElMessage} from "element-plus";
 import {useI18n} from 'vue-i18n';
+import {locales} from "@/locale";
 
 const t = useI18n()
 provide('flowStore', () => flowEditor?.store)
@@ -225,7 +226,7 @@ const portToolTip = ref({
   valueType: '',
   useServer: false,
   enable: true,
-  showValue:null
+  showValue: null
 })
 const portToolTipRef = ref()
 let flowEditor: FlowEditor
@@ -403,7 +404,7 @@ function changeNodePortVisible(nodeId: string, portKey: string, visible: boolean
 function onNodeDropIn({node, e}: { node: Node, e: MouseEvent }) {
   //等待画布获取鼠标位置
   const {x, y} = flowEditor?.render.graph.pageToLocal(e.x, e.y)
-  addNode({...node, ui: {...node.ui, x: x - 20, y: y -15}})
+  addNode({...node, ui: {...node.ui, x: x - 20, y: y - 15}})
 
 }
 
@@ -514,15 +515,15 @@ onMounted(async () => {
     portToolTip.value.y = e.pageY
     portToolTip.value.showValue = null
     if (e.ctrlKey) {
-      let content=null
-      if(portInfo.portType == 'out'){
-       content=node.fineNode?.store.outputs[portInfo.portKey]
+      let content = null
+      if (portInfo.portType == 'out') {
+        content = node.fineNode?.store.outputs[portInfo.portKey]
       }
-      if(portInfo.portType == 'in'){
-        content=node.fineNode?.inputs.value[portInfo.portKey]
+      if (portInfo.portType == 'in') {
+        content = node.fineNode?.inputs.value[portInfo.portKey]
       }
-      if(typeof content!=='string'){
-        content = JSON.stringify(content)+''
+      if (typeof content !== 'string') {
+        content = JSON.stringify(content) + ''
       }
 
       portToolTip.value.showValue = content.length > 100 ? content.slice(0, 100) + '...' : content

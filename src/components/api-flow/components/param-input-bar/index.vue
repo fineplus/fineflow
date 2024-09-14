@@ -4,7 +4,7 @@
     <el-card class="param-card">
       <template #header>
         <div class="card-header">
-          <span>参数配置</span>
+          <span>{{$t('words.param_configuration')}}</span>
           <!-- <el-tooltip v-if="node.des" placement="top-start" effect="light">
             <template #content> {{ node.des }}</template>
             <svg style="display: inline-block;
@@ -17,23 +17,23 @@
         </div>
       </template>
       <div class="flex-c mt-6 opacity-60" v-if="!node.input || node.input?.length == 0">
-        无
+        {{$t('words.none')}}
       </div>
       <div v-for="param in node.input">
         <div class="param-label">
           <div>{{ param.name }}</div>
           <div class="ml-auto flex flex-row gap-2">
             <el-switch :model-value="!(param.show?.all !== false)" @change="(val) => { changeVisible(param, val) }"
-              :size="'small'" style="width: 100%" active-text="隐藏" inactive-text="隐藏" inline-prompt></el-switch>
+              :size="'small'" style="width: 100%" :active-text="$t('words.hide')" :inactive-text="$t('words.hide')" inline-prompt></el-switch>
             <el-switch :model-value="!(param.show?.input !== false)"
               @change="(val) => { if (!param.show) { param.show = {} }; param.show.input = !val }" :size="'small'"
-              style="width: 100%" active-text="隐藏输入" inactive-text="隐藏输入" inline-prompt></el-switch>
+              style="width: 100%" :active-text="$t('words.hide_input')" :inactive-text="$t('words.hide_input')" inline-prompt></el-switch>
           </div>
         </div>
         <div>
           <input-param v-if="!param.useServer" :param="param" :model-value="inValueMap[param.key]"
             @update:model-value="(newVal) => { inValueMap[param.key] = newVal }" ctx="" />
-          <div v-else class="opacity-50">服务端参数</div>
+          <div v-else class="opacity-50">{{ $t('words.server_param') }}</div>
         </div>
       </div>
     </el-card>

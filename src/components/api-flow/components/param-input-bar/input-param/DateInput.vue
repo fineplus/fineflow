@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker v-model="value" :size="size" type="date" placeholder="选择日期" format="YYYY/MM/DD"
+  <el-date-picker v-model="value" :size="size" type="date" :placeholder="$t('words.select_date')" format="YYYY/MM/DD"
     value-format="YYYY-MM-DD" :default-value="new Date()" :disabled="disabled" />
 </template>
 

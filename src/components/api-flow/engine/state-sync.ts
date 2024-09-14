@@ -1,6 +1,6 @@
 //前后端状态同步，使用webscoket
 
-import type {FlowServerModelType} from "@/api/database/db/server";
+import type {FlowServerModelType} from "@/api/db/db/server";
 import type {FlowStore} from "@/components/api-flow/engine/editor";
 
 

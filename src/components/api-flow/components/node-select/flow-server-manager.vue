@@ -80,10 +80,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import type { FlowServerModelType } from "@/api/database/db/server";
-import { FlowServerModel } from "@/api/database/db/server";
+import type { FlowServerModelType } from "@/api/db";
 import { ElMessage } from "element-plus";
-import { db } from "@/api/database";
+import { db } from "@/api/db";
 
 const emit = defineEmits(['change'])
 const addDialogVisible = ref(false)

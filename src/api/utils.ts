@@ -1,46 +1,13 @@
-import {ElMessage} from "element-plus";
-import {api} from "./api";
 import {allDb} from "@/utils/loadDb";
+import {ElMessage} from "element-plus";
 
-type QueryExpress =
-    | "="
-    | ">"
-    | "<"
-    | "<="
-    | ">="
-    | "like"
-    | "in"
-    | "range"
-    | "find_in_set";
-
-interface QueryParam {
-    name: string;
-    type: QueryExpress;
-    model?: "and" | "or";
-    value: any;
-}
-
-export interface OrderParam {
-    [key: string]: "asc" | "desc" | null;
-}
-
-interface Query {
-    params?: QueryParam[];
-    order?: OrderParam;
-    relation_use_id?: boolean;
-    page: number;
-    page_size: number;
-}
-
-class CrudApi {
+class ModelApi {
     baseUrl: string;
     idKey: string;
 
-    constructor(baseUrl: string, idKey = "id") {
-        this.baseUrl = baseUrl;
+    constructor(table, idKey = "id") {
         this.idKey = idKey;
-        this.table = this.baseUrl.split('/').slice(-1)[0];
-        console.log(this.table)
+        this.table = table
     }
 
 
@@ -68,8 +35,7 @@ class CrudApi {
 
     async add(newData: any) {
         try {
-            console.log(newData, 'newData')
-            const data = await allDb.db.execute(
+            await allDb.db.execute(
                 `INSERT into ${this.table}  (${Object.keys(newData).join(',')}) VALUES (${ Object.keys(newData).map((_,i)=>'$'+(i+1)).join(',')})`,
                 Object.keys(newData).map(key => newData[key]),
             );
@@ -115,17 +81,6 @@ class CrudApi {
     }
 
 
-    async queryCommon(query: Query) {
-        try {
-            return await api.post<any, any>(this.baseUrl + "/query", query);
-        } catch (e) {
-            if (e.response?.data?.detail) {
-                ElMessage.warning(e.response?.data?.detail);
-            }
-            throw e;
-        }
-    }
 }
 
-export {CrudApi};
-export type {Query, QueryParam, QueryExpress};
+export {ModelApi}

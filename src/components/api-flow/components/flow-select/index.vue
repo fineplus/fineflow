@@ -234,15 +234,13 @@
 </template>
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import type { CategoryNameFlow, ModNameFlow, FlowModelType } from "@/api/database/db/flow";
+import type { FlowModelType } from "@/api/db";
 import { ArrowDown, ArrowRight, Expand, Right, Search } from "@element-plus/icons-vue";
-// import { categoryNameFlowModel, modNameFlowModel, flowModel } from "@/api/database/db/flow";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { generateID } from "@/components/api-flow/common-utils";
 import { makeDefaultFlow, makeDefaultNode } from "@/components/api-flow/engine/utils";
 import type { Flow as ContentFlow } from '@/components/api-flow/engine/types'
-import type { Node as ContentNode } from "@/components/api-flow/engine/types";
-import { db } from "@/api/database";
+import { db } from "@/api/db";
 import {useI18n} from  'vue-i18n'
 const t=useI18n().t
 const { categoryNameFlowModel, modNameFlowModel, flowModel } = db
