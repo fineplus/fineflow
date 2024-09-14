@@ -6,12 +6,12 @@
   </a>
 <h1 align="center" >FineFlow</h1>
 <div align="center" >everything can be workflow</div>
-<a href="https://github.com/othneildrew/Best-README-Template"><strong>docs</strong></a>
+<a href="https://fineplus.github.io/fineflow-home/"><strong>docs</strong></a>
 <a>|</a>
-<a href="https://github.com/othneildrew/Best-README-Template"><strong>download</strong></a>
+<a href="https://github.com/fineplus/fineflow/releases/tag/fineflow"><strong>download</strong></a>
 </div>
 
-# 1. Introduce
+# 1. Introduction
 
 
 <div style="display: flex;flex-direction: column;gap:0.5rem;align-items: center">
