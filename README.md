@@ -1,25 +1,15 @@
 <!-- PROJECT LOGO -->
-<br />
-<div style="display: flex;align-items: center;justify-content: center;">
-<div style="display: flex;width: 40%;">
-<div style="flex:1 1">
-<img  src="https://fineplus.github.io/fineflow-home/logo.png" alt="Logo" width="180" height="180">
-</div>
-<div style="flex:1 1;display: flex;flex-direction: column;justify-content: center">
+
+<div align="center">
+  <a href="https://github.com/fineplus/fineflow">
+    <img src="https://fineplus.github.io/fineflow-home/logo.png" alt="Logo" width="180" height="180">
+  </a>
 <div align="center" style="font-weight: bold;font-size: 1.5rem">FineFlow</div>
-  <span align="center">
-    everything can be workflow
-  </span>
-  <span align="center">
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>docs</strong></a>
-    <a>|</a>
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>download</strong></a>
-  </span>
+<div align="center" >everything can be workflow</div>
+<a href="https://github.com/othneildrew/Best-README-Template"><strong>docs</strong></a>
+<a>|</a>
+<a href="https://github.com/othneildrew/Best-README-Template"><strong>download</strong></a>
 </div>
-</div>
-</div>
-
-
 
 # 1. Introduce
 
