@@ -4,7 +4,7 @@
       <div v-if="leftBarVisible" class="flex flex-col min-w-[30rem] left-pane ">
         <div class="flex-1 node-param-pane overflow-auto">
           <el-tabs v-model="editorConf.param.active" class="flex flex-col h-full px-2">
-            <el-tab-pane label="输入参数" name="input" class="h-full">
+            <el-tab-pane :label="$t('nodeEditor.input_params')" name="input" class="h-full">
               <div class="h-full flex flex-col">
                 <div class="h-full">
                   <div v-if="isSeverNode" class="comp-overlay"></div>
@@ -12,7 +12,7 @@
                 </div>
               </div>
             </el-tab-pane>
-            <el-tab-pane label="输出参数" name="output" class="h-full">
+            <el-tab-pane :label="$t('nodeEditor.output_params')" name="output" class="h-full">
               <div class="h-full flex flex-col">
                 <div class="h-full">
                   <div v-if="isSeverNode" class="comp-overlay"></div>
@@ -25,7 +25,7 @@
         <div class="flex-1">
           <div class="node-config-item">
             <div class="node-config-item__label ">
-              节点名称
+              {{$t('nodeEditor.node_name')}}
             </div>
             <div class="node-config-item__right">
               <el-input style="width: 12rem" size="small" v-model="node.name" placeholder="请输入节点名称"></el-input>
@@ -34,7 +34,7 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                节点高度
+                {{$t('nodeEditor.node_height')}}
               </div>
               <div class="node-config-item__right ">
                 <el-input style="width: 4rem" size="small" v-model="node.ui.height"></el-input>
@@ -42,7 +42,7 @@
             </div>
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                节点宽度
+                {{$t('nodeEditor.node_width')}}
               </div>
               <div class="node-config-item__right">
                 <el-input style="width: 4rem" size="small" v-model="node.ui.width"></el-input>
@@ -52,7 +52,7 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                标题背景
+                {{$t('nodeEditor.title_background')}}
               </div>
               <div class="node-config-item__right flex-c">
                 <el-color-picker v-model="node.ui.titleBg" show-alpha />
@@ -60,7 +60,7 @@
             </div>
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                标题文本
+                {{$t('nodeEditor.title_text')}}
               </div>
               <div class="node-config-item__right flex-c">
                 <el-color-picker v-model="node.ui.titleColor" show-alpha />
@@ -70,7 +70,7 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                节点背景
+                {{$t('nodeEditor.node_background')}}
               </div>
               <div class="node-config-item__right flex-c">
                 <el-color-picker v-model="node.ui.bg" show-alpha />
@@ -80,7 +80,7 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                节点描述
+                {{$t('nodeEditor.node_description')}}
               </div>
               <div class="node-config-item__right flex-c !px-0 m-0 flex-1">
                 <el-input class="node-des" v-model="node.des" style="height:4rem;border: none;width: 100%;"
@@ -92,17 +92,17 @@
       </div>
       <div class="flex-1 min-w-[20rem] min-h-[20rem] flex flex-col p-2 pt-1" style="background: #31333c">
         <div class="shadow py-1 px-2 mb-2 flex" style="background: #3b3d45;border-radius: 0.5rem">
-          <el-button size="small" @click="leftBarVisible = !leftBarVisible">{{ leftBarVisible ? '隐藏参数面版' :
-            '显示参数面板' }}</el-button>
+          <el-button size="small" @click="leftBarVisible = !leftBarVisible">{{ leftBarVisible ? $t('nodeEditor.hide_param_panel') :
+              $t('nodeEditor.show_param_panel') }}</el-button>
 
           <div class="ml-auto">
-            <el-button size="small">执行</el-button>
-            <el-button size="small" @click="saveNode">保存</el-button>
-            <el-button size="small" @click="emits('cancel')">返回</el-button>
-            <el-button size="small" @click="reloadNode">重载</el-button>
+            <el-button size="small">{{$t('nodeEditor.execute')}}</el-button>
+            <el-button size="small" @click="saveNode">{{$t('nodeEditor.save')}}</el-button>
+            <el-button size="small" @click="emits('cancel')">{{$t('nodeEditor.return')}}</el-button>
+            <el-button size="small" @click="reloadNode">{{$t('nodeEditor.reload')}}</el-button>
           </div>
         </div>
-        <div class="font-bold text-center node-preview-title">节点预览</div>
+        <div class="font-bold text-center node-preview-title">{{$t('nodeEditor.node_preview')}}</div>
         <div class="flex-1 node-preview-container">
           <div style="width: 100%;height: 100%">
             <div :id="containerId" style="width: 100%;height: 100%"></div>
@@ -112,20 +112,12 @@
       <div :class="`${leftBarVisible ? 'flex-1' : 'flex-[2_2_0%]'} flex flex-col w-[30rem] h-full right-pane`">
         <div class="flex-1 px-2 h-full node-code-pane">
           <el-tabs v-model="editorConf.component.topPaneActive" class="flex flex-col h-full">
-            <el-tab-pane label="组件" name="component" class="h-full pb-2">
-              <code-editor lang="vue" placeholder="模板代码" v-model="node.ui.component"
+            <el-tab-pane :label="$t('nodeEditor.component')" name="component" class="h-full pb-2">
+              <code-editor lang="vue" :placeholder="$t('nodeEditor.template_code')" v-model="node.ui.component"
                 :default="vueDefaultCode"></code-editor>
             </el-tab-pane>
-            <!-- <el-tab-pane label="模板" name="template" class="h-full pb-2">
-              <code-editor lang="vue" placeholder="模板代码" v-model="node.ui.component.template"></code-editor>
-            </el-tab-pane>
-            <el-tab-pane label="代码" name="code" class="h-full pb-2">
-              <code-editor lang="javascript" placeholder="组件代码" v-model="node.ui.component.options"></code-editor>
-            </el-tab-pane>
-            <el-tab-pane label="样式" name="css" class="h-full pb-2">
-              <code-editor lang="css" placeholder="样式代码" v-model="node.ui.component.css"></code-editor>
-            </el-tab-pane> -->
-            <el-tab-pane label="函数" name="function" class="h-full pb-2">
+
+            <el-tab-pane :label="$t('nodeEditor.function')" name="function" class="h-full pb-2">
               <func-editor v-model:function="node.func" :api-node="node" />
             </el-tab-pane>
           </el-tabs>
@@ -207,7 +199,7 @@ function saveNode() {
 
 onMounted(() => {
   if (!node.value.func) {
-    node.value.func = { code: "", lang: "python" }
+    node.value.func = { code: "", lang: "javascript" }
   }
   setTimeout(() => {
     editor = new FlowEditor(containerId.value)
@@ -223,7 +215,7 @@ function setNode(newNode: Node) {
     editor?.render.graph.clearCells()
     node.value = copy(newNode)
     if (!node.value.func) {
-      node.value.func = { lang: 'python', code: '' }
+      node.value.func = { lang: 'javascript', code: '' }
     }
     node.value.preview = true
 

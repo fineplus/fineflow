@@ -3,12 +3,12 @@
     <div class="flex-1 overflow-auto">
       <div class="h-full">
         <el-table border style="height: 100%" :data="value">
-          <el-table-column align="center" label="名称">
+          <el-table-column align="center" :label="$t('words.name')">
             <template #default="scope">
               <el-input size="small" v-model="scope.row.name"></el-input>
             </template>
           </el-table-column>
-          <el-table-column align="center" label="值">
+          <el-table-column align="center" :label="$t('words.value')">
             <template #default="scope">
               <el-input size="small" v-if="valueType == 'string'" v-model="scope.row.value"></el-input>
               <el-input-number :controls="false" precision="0" size="small" v-else-if="valueType == 'integer'"
@@ -16,7 +16,7 @@
               <el-input-number :controls="false" size="small" v-else v-model="scope.row.value"></el-input-number>
             </template>
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column :label="$t('words.actions')">
             <template #default="scope">
               <el-button size="small" :icon="Delete" circle
                 @click="() => { value.splice(value.indexOf(scope.row), 1); setValue() }" />

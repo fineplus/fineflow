@@ -1,8 +1,9 @@
 import {reactive} from "vue";
-import type {FlowServerModelType} from "@/api/database/db/server";
+import type {FlowServerModelType} from "@/api/db/db/server";
 import type {SystemConfig} from "@/components/api-flow/engine/types";
 import {allDb, loadDb} from "@/utils/loadDb";
 import {ElMessage} from "element-plus";
+import {locales} from "@/locale";
 
 export const flowServerStore = reactive<{ value: { [key: string]: FlowServerModelType } }>({value: {}})
 export const systemConfigStore = reactive<{ value: SystemConfig }>({value: {customPyFuncHref: null}})
@@ -38,7 +39,7 @@ export function updateSystemConfig() {
 
     allDb.db.execute('UPDATE config SET value = $1 WHERE key = $2;', [JSON.stringify(systemConfigStore.value), 'system_config']).then((res) => {
         console.log(res)
-        ElMessage.success('保存成功')
+        ElMessage.success(locales.t('words.save_success'))
     })
 }
 

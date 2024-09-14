@@ -40,7 +40,7 @@ import type { Options as GraphOptions } from "@antv/x6/src/graph/options";
 import { computed, type ComputedRef, h, reactive, type Ref, render } from "vue";
 import { EventEmitter } from "eventemitter3";
 import {configStore, flowServerStore, getSystemConfig, systemConfigStore} from "@/components/api-flow/engine/store";
-import type { FlowServerModelType } from "@/api/database/db/server";
+import type { FlowServerModelType } from "@/api/db/db/server";
 import { StateSync } from "@/components/api-flow/engine/state-sync";
 // import {ElMessage} from "element-plus";
 import { Selection } from "@antv/x6-plugin-selection";
@@ -48,6 +48,7 @@ import { Keyboard } from "@antv/x6-plugin-keyboard";
 import { circle } from "@antv/x6/lib/registry/marker/circle";
 import { smoothRounded, smoothRoundedRouter, smoothCenterRouter, smoothCenter } from "./register";
 import { makeVue } from "./dynamic";
+import {locales} from "@/locale";
 
 //节点数据，可以清除的
 interface FineNodeStore {
@@ -197,7 +198,7 @@ class FineNode {
                     const it = setInterval(() => {
                         if (!this.flowStore.flowRunning.value) {
                             clearInterval(it);
-                            reject("提前终止流程");
+                            reject(locales.t('words.premature_termination_of_process'));
                         }
                     }, 200);
                 }
@@ -900,7 +901,7 @@ class FlowEditor {
 
     async runFlowBySignal(handel: (nodeId: string) => any) {
         if (this.store.flowRunning.value) {
-            return "正在执行"
+            return locales.t('words.in_processing')
         }
         //清除之前的运行状态
         this.store.flow.nodes.forEach((node) => {
@@ -920,7 +921,7 @@ class FlowEditor {
 
     async runFlowLoopBySignal(handel: (nodeId: string) => any) {
         if (this.store.flowRunning.value) {
-            return "正在执行"
+            return locales.t('words.in_processing')
         }
         //清除之前的运行状态
         this.store.flow.nodes.forEach((node) => {
@@ -942,7 +943,7 @@ class FlowEditor {
 
     async runStartAtNode(nodeId: string, handel: (nodeId: string) => any) {
         if (this.store.flowRunning.value) {
-            return "执行中";
+            return locales.t('words.processing');
         }
         //清除之前的运行状态
         // this.store.flow.nodes.forEach(node => {
@@ -962,7 +963,7 @@ class FlowEditor {
 
     async runNodeSelf(nodeId: string, handel: (nodeId: string) => any) {
         if (this.store.flowRunning.value) {
-            return "执行中";
+            return locales.t('words.processing');
         }
         //清除之前的运行状态
         // this.store.flow.nodes.forEach(node => {
@@ -1272,7 +1273,7 @@ class FlowRunner {
                     const it = setInterval(() => {
                         if (!this.store.flowRunning.value) {
                             clearInterval(it);
-                            reject("提前终止流程");
+                            reject(locales.t('words.premature_termination_of_process'));
                         }
                     }, 500);
                 }
@@ -1289,7 +1290,7 @@ class FlowRunner {
                     const it = setInterval(() => {
                         if (!this.store.flowRunning.value) {
                             clearInterval(it);
-                            reject("提前终止流程");
+                            reject(locales.t('words.premature_termination_of_process'));
                         }
                     }, 500);
                 }
@@ -1309,7 +1310,7 @@ class FlowRunner {
                     const it = setInterval(() => {
                         if (!this.store.flowRunning.value) {
                             clearInterval(it);
-                            reject("提前终止流程");
+                            reject(locales.t('words.premature_termination_of_process'));
                         }
                     }, 500);
                 }

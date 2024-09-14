@@ -3,7 +3,7 @@
     <!-- <div class="title-text">节点列表</div> -->
     <div class="node-search-box " style="--el-border-color: rgba(0,0,0,0);--el-fill-color-blank: #333340">
       <el-input :prefix-icon="Search as any" v-model="searchWord" style="height: 26px;width: auto" clearable
-        placeholder="搜索节点"></el-input>
+        :placeholder="$t('nodeSelect.search_node')"></el-input>
     </div>
     <div class="node-tree flex-1 overflow-y-auto custom-scrollbar">
       <div v-for="mod in nodeTreeFilter">
@@ -66,10 +66,10 @@
     </div>
     <div class="flex-c py-2 opacity-80">
       <div>
-        <el-button :color="'#31303f'" size="small" @click="showNodeAdd">添加节点</el-button>
+        <el-button :color="'#31303f'" size="small" @click="showNodeAdd">{{ $t('nodeSelect.add_node') }}</el-button>
       </div>
       <div>
-        <el-button :color="'#31303f'" class="mt-2" size="small" @click="showSettingManager">系统设置</el-button>
+        <el-button :color="'#31303f'" class="mt-2" size="small" @click="showSettingManager">{{ $t('nodeSelect.system_setting') }}</el-button>
       </div>
       <!--      <div>-->
       <!--        <el-select size="small" v-model="$i18n.locale" class="mt-2" style="width: 70px;">-->
@@ -78,45 +78,45 @@
       <!--        </el-select>-->
       <!--      </div>-->
     </div>
-    <el-dialog v-model="nodeAddDialogVisible" title="添加节点" style="width: 28rem">
+    <el-dialog v-model="nodeAddDialogVisible" :title="$t('nodeSelect.add_node')" style="width: 28rem">
       <div class="ml-10">
         <el-form>
-          <el-form-item label="所属模块">
-            <el-select size="small" v-model="nodeAddTemp.modNameId" placeholder="请选择"
+          <el-form-item :label="$t('nodeSelect.belong_mod')">
+            <el-select size="small" v-model="nodeAddTemp.modNameId" :placeholder="$t('nodeSelect.please_select')"
               @change="() => nodeAddTemp.categoryNameId = null">
               <el-option v-for="item in modOptions" :key="item.id" :label="item.name" :value="item.id"></el-option>
             </el-select>
-            <el-button size="small" class="ml-4" @click="showModAdd">添加</el-button>
+            <el-button size="small" class="ml-4" @click="showModAdd">{{$t('words.add')}}</el-button>
           </el-form-item>
-          <el-form-item label="所属类别">
-            <el-select size="small" placeholder="请选择" v-model="nodeAddTemp.categoryNameId">
+          <el-form-item :label="$t('nodeSelect.belong_category')">
+            <el-select size="small" :placeholder="$t('nodeSelect.please_select')" v-model="nodeAddTemp.categoryNameId">
               <el-option v-for="item in categoryOptions" :key="item.id" :label="item.name" :value="item.id"></el-option>
             </el-select>
-            <el-button size="small" class="ml-4" @click="showCategoryAdd">添加</el-button>
+            <el-button size="small" class="ml-4" @click="showCategoryAdd">{{$t('words.add')}}</el-button>
           </el-form-item>
-          <el-form-item label="节点名称">
-            <el-input v-model="nodeAddTemp.name" size="small" placeholder="请输入" style="width: 10.75rem"></el-input>
+          <el-form-item :label="$t('nodeSelect.node_name')">
+            <el-input v-model="nodeAddTemp.name" size="small" :placeholder="$t('nodeSelect.please_input')" style="width: 10.75rem"></el-input>
           </el-form-item>
         </el-form>
 
       </div>
       <template #footer>
         <div>
-          <el-button size="small" @click="nodeAddDialogVisible = false">取消</el-button>
-          <el-button size="small" type="primary" @click="gotoNodeEdit">确定</el-button>
+          <el-button size="small" @click="nodeAddDialogVisible = false">{{$t('words.cancel')}}</el-button>
+          <el-button size="small" type="primary" @click="gotoNodeEdit">{{$t('words.confirm')}}</el-button>
         </div>
       </template>
     </el-dialog>
-    <el-dialog v-model="categoryAddVisible" title="添加子类" style="width: 28rem">
+    <el-dialog v-model="categoryAddVisible" :title="$t('nodeSelect.add_category')" style="width: 28rem">
       <div class="ml-10">
         <el-form>
-          <el-form-item label="所属模块">
-            <el-select size="small" placeholder="请选择" v-model="categoryAddTemp.modNameId">
+          <el-form-item :label="$t('nodeSelect.belong_mod')">
+            <el-select size="small" :placeholder="$t('nodeSelect.please_select')" v-model="categoryAddTemp.modNameId">
               <el-option v-for="item in modOptions" :key="item.id" :label="item.name" :value="item.id"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="类别名称">
-            <el-input size="small" v-model.trim="categoryAddTemp.name" placeholder="请输入"
+          <el-form-item :label="$t('nodeSelect.category_name')">
+            <el-input size="small" v-model.trim="categoryAddTemp.name" :placeholder="$t('nodeSelect.please_input')"
               style="width: 10.75rem"></el-input>
           </el-form-item>
         </el-form>
@@ -124,12 +124,12 @@
       </div>
       <template #footer>
         <div>
-          <el-button size="small" @click="categoryAddVisible = false">取消</el-button>
-          <el-button size="small" type="primary" @click="saveCategoryAdd">确定</el-button>
+          <el-button size="small" @click="categoryAddVisible = false">{{$t('words.cancel')}}</el-button>
+          <el-button size="small" type="primary" @click="saveCategoryAdd">{{$t('words.confirm')}}</el-button>
         </div>
       </template>
     </el-dialog>
-    <el-dialog v-model="categoryEditVisible" title="编辑子类" style="width: 28rem">
+    <el-dialog v-model="categoryEditVisible" :title="$t('nodeSelect.category_edit')" style="width: 28rem">
       <div class="ml-10">
         <el-form>
           <!--          <el-form-item label="所属模块">-->
@@ -137,8 +137,8 @@
           <!--              <el-option v-for="item in modOptions" :key="item.id" :label="item.name" :value="item.id"></el-option>-->
           <!--            </el-select>-->
           <!--          </el-form-item>-->
-          <el-form-item label="类别名称">
-            <el-input size="small" v-model.trim="categoryEditTemp.name" placeholder="请输入"
+          <el-form-item :label="$t('nodeSelect.category_name')">
+            <el-input size="small" v-model.trim="categoryEditTemp.name" :placeholder="$t('nodeSelect.please_input')"
               style="width: 10.75rem"></el-input>
           </el-form-item>
         </el-form>
@@ -146,39 +146,39 @@
       </div>
       <template #footer>
         <div>
-          <el-button size="small" @click="categoryEditVisible = false">取消</el-button>
-          <el-button size="small" type="primary" @click="saveCategoryEdit">确定</el-button>
+          <el-button size="small" @click="categoryEditVisible = false">{{$t('words.cancel')}}</el-button>
+          <el-button size="small" type="primary" @click="saveCategoryEdit">{{$t('words.confirm')}}</el-button>
         </div>
       </template>
     </el-dialog>
-    <el-dialog v-model="modEditVisible" title="编辑模块" style="width: 28rem">
+    <el-dialog v-model="modEditVisible" :title="$t('nodeSelect.edit_mod')" style="width: 28rem">
       <div class="ml-10">
         <el-form>
-          <el-form-item label="模块名称">
-            <el-input size="small" v-model.trim="modEditTemp.name" placeholder="请输入" style="width: 10.75rem"></el-input>
+          <el-form-item :label="$t('nodeSelect.mod_name')">
+            <el-input size="small" v-model.trim="modEditTemp.name" :placeholder="$t('nodeSelect.please_input')" style="width: 10.75rem"></el-input>
           </el-form-item>
         </el-form>
 
       </div>
       <template #footer>
         <div>
-          <el-button size="small" @click="modEditVisible = false">取消</el-button>
-          <el-button size="small" type="primary" @click="saveModEdit">确定</el-button>
+          <el-button size="small" @click="modEditVisible = false">{{$t('words.cancel')}}</el-button>
+          <el-button size="small" type="primary" @click="saveModEdit">{{$t('words.confirm')}}</el-button>
         </div>
       </template>
     </el-dialog>
-    <el-dialog v-model="modAddDialogVisible" title="添加类别" style="width: 28rem">
+    <el-dialog v-model="modAddDialogVisible" :title="$t('nodeSelect.add_category')" style="width: 28rem">
       <div class="ml-10">
         <el-form>
-          <el-form-item label="类别名称">
-            <el-input size="small" v-model.trim="modAddNameTemp" placeholder="请输入" style="width: 10.75rem"></el-input>
+          <el-form-item :label="$t('nodeSelect.category_name')">
+            <el-input size="small" v-model.trim="modAddNameTemp" :placeholder="$t('nodeSelect.please_input')" style="width: 10.75rem"></el-input>
           </el-form-item>
         </el-form>
       </div>
       <template #footer>
         <div>
-          <el-button size="small" @click="modAddDialogVisible = false">取消</el-button>
-          <el-button size="small" @click="saveModAdd" type="primary">确定</el-button>
+          <el-button size="small" @click="modAddDialogVisible = false">{{$t('words.cancel')}}</el-button>
+          <el-button size="small" @click="saveModAdd" type="primary">{{$t('words.confirm')}}</el-button>
         </div>
       </template>
     </el-dialog>
@@ -187,12 +187,12 @@
       <node-editor ref="nodeEditor" :node="tempEditorEditNode.contentNode" @update:node="nodeUpdate"
         @cancel="closeEditor"></node-editor>
     </el-dialog>
-    <el-dialog title="节点服务管理" v-model="settingVisible" style="border-radius: 0.75rem" class="setting-dialog">
+    <el-dialog :title="$t('nodeSelect.node_server_manager')" v-model="settingVisible" style="border-radius: 0.75rem" class="setting-dialog">
       <el-tabs v-model="activeConfigTabName">
-        <el-tab-pane label="服务管理" name="serverManager">
+        <el-tab-pane :label="$t('nodeSelect.server_manager')" name="serverManager">
           <flow-server-manager @change="getNodeTree"></flow-server-manager>
         </el-tab-pane>
-        <el-tab-pane label="系统配置" name="systemSetting" style="height: 100%">
+        <el-tab-pane :label="$t('nodeSelect.system_setting')" name="systemSetting" style="height: 100%">
           <system-setting style="height: 100%;"></system-setting>
         </el-tab-pane>
 <!--        <el-tab-pane label="数据管理" name="dataManage" style="height: 100%">-->
@@ -204,35 +204,35 @@
       v-if="floatMenu.visible" :style="{ top: floatMenu.top, left: floatMenu.left }">
       <div v-if="floatMenu.type === 'nodeConfig'">
         <div>
-          节点菜单
+          {{$t('nodeSelect.node_menu')}}
         </div>
-        <div @click="showNodeEdit">编辑
+        <div @click="showNodeEdit">{{$t('words.edit')}}
         </div>
-        <div @click="showNodeDelete">删除
+        <div @click="showNodeDelete">{{$t('words.delete')}}
         </div>
-        <div @click="floatMenu.visible = false">取消
+        <div @click="floatMenu.visible = false">{{$t('words.cancel')}}
         </div>
       </div>
       <div v-if="floatMenu.type === 'categoryConfig'">
         <div>
-          子类菜单
+          {{$t('nodeSelect.category_menu')}}
         </div>
-        <div @click="showCategoryEdit">编辑
+        <div @click="showCategoryEdit">{{$t('words.edit')}}
         </div>
-        <div @click="showCategoryDelete">删除
+        <div @click="showCategoryDelete">{{$t('words.delete')}}
         </div>
-        <div @click="floatMenu.visible = false">取消
+        <div @click="floatMenu.visible = false">{{$t('words.cancel')}}
         </div>
       </div>
       <div v-if="floatMenu.type === 'modConfig'">
         <div>
-          模块菜单
+          {{$t('nodeSelect.mod_menu')}}
         </div>
-        <div @click="showModEdit">编辑
+        <div @click="showModEdit">{{$t('words.edit')}}
         </div>
-        <div @click="showModDelete">删除
+        <div @click="showModDelete">{{$t('words.delete')}}
         </div>
-        <div @click="floatMenu.visible = false">取消
+        <div @click="floatMenu.visible = false">{{$t('words.cancel')}}
         </div>
       </div>
     </div>
@@ -240,9 +240,7 @@
 </template>
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
-import type { CategoryName, ModName, NodeModelType } from "@/api/database/db/node";
 import { ArrowDown, ArrowRight, Expand, Right, Search } from "@element-plus/icons-vue";
-// import { categoryNameModel, modNameModel, nodeModel } from "@/api/database/db/node";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { generateID } from "@/components/api-flow/common-utils";
 import NodeEditor from "@/components/api-flow/components/node-editor/index.vue";
@@ -250,14 +248,12 @@ import { makeDefaultNode } from "@/components/api-flow/engine/utils";
 import type { Node as ContentNode } from '@/components/api-flow/engine/types'
 import { api } from "@/utils/api";
 import FlowServerManager from "@/components/api-flow/components/node-select/flow-server-manager.vue";
-// import { FlowServerModel, type FlowServerModelType } from "@/api/database/db/server";
 import { flowServerStore } from "@/components/api-flow/engine/store";
-import { db } from "@/api/database";
-import type { FlowServerModelType } from "@/api/database/db";
-import { copy } from "../param-input-bar/input-param/utils";
+import { db } from "@/api/db";
+import type { FlowServerModelType ,NodeModelType} from "@/api/db";
 import SystemSetting from "@/components/api-flow/components/system-setting.vue";
-import DataManage from "@/components/api-flow/components/data-manage.vue";
 import {loadDb} from "@/utils/loadDb";
+import {locales} from "@/locale";
 const { categoryNameModel, modNameModel, nodeModel, flowServerModel } = db
 
 interface ModItem {
@@ -473,11 +469,11 @@ function onModRightClick(e: MouseEvent, id: number) {
 
 function showNodeDelete() {
   ElMessageBox.confirm(
-    '确定删除该节点?',
-    '提示',
+    locales.t('nodeSelect.confirm_delete_node'),
+      locales.t('words.tip'),
     {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
+      confirmButtonText: locales.t('words.confirm'),
+      cancelButtonText: locales.t('words.cancel'),
       type: 'warning',
     }
   )
@@ -488,7 +484,7 @@ function showNodeDelete() {
       } else {
         ElMessage({
           type: 'success',
-          message: '删除成功',
+          message: locales.t('words.delete_success'),
         })
         await getNodeTree()
       }
@@ -497,11 +493,11 @@ function showNodeDelete() {
 
 function showCategoryDelete() {
   ElMessageBox.confirm(
-    '确定删除该子类?',
-    '提示',
+      locales.t('nodeSelect.confirm_delete_sub_category'),
+      locales.t('words.tip'),
     {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
+      confirmButtonText: locales.t('words.confirm'),
+      cancelButtonText: locales.t('words.cancel'),
       type: 'error',
     }
   )
@@ -512,7 +508,7 @@ function showCategoryDelete() {
       } else {
         ElMessage({
           type: 'success',
-          message: '删除成功',
+          message: locales.t('words.delete_success'),
         })
         await getNodeTree()
       }
@@ -521,11 +517,11 @@ function showCategoryDelete() {
 
 function showModDelete() {
   ElMessageBox.confirm(
-    '确定删除该模块?',
-    '提示',
+      locales.t('nodeSelect.confirm_delete_mod'),
+      locales.t('words.tip'),
     {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
+      confirmButtonText: locales.t('words.confirm'),
+      cancelButtonText: locales.t('words.cancel'),
       type: 'error',
     }
   )
@@ -536,7 +532,7 @@ function showModDelete() {
       } else {
         ElMessage({
           type: 'success',
-          message: '删除成功',
+          message: locales.t('words.delete_success'),
         })
         await getNodeTree()
       }
@@ -547,7 +543,7 @@ function showModDelete() {
 async function saveNodeAdd(): Promise<any> {
   const { name, categoryNameId, modNameId, key } = nodeAddTemp.value
   if (!(name && categoryNameId && modNameId && key)) {
-    ElMessage.warning('请补充完整信息')
+    ElMessage.warning(locales.t('nodeSelect.pls_complete_info'),)
     return false
   }
   const contentNode = makeDefaultNode()
@@ -588,10 +584,10 @@ async function nodeUpdate(contentNode: ContentNode) {
   tempEditorEditNode.value.name = name
   const { key, categoryNameId } = tempEditorEditNode.value
   if (!name) {
-    return ElMessage.warning('节点名称不能为空')
+    return ElMessage.warning(locales.t('nodeSelect.node_name_cant_null'))
   }
   if (!key) {
-    return ElMessage.warning('节点key不能为空')
+    return ElMessage.warning(locales.t('nodeSelect.node_key_cant_null'))
   }
   let content
   if (contentNode) {
@@ -619,20 +615,20 @@ async function nodeUpdate(contentNode: ContentNode) {
     return ElMessage.warning(res.msg)
   } else {
     await getNodeTree()
-    return ElMessage.success('保存成功')
+    return ElMessage.success(locales.t('words.save_success'))
   }
 }
 
 async function saveModAdd() {
   if (!modAddNameTemp.value) {
-    return ElMessage.warning('名称不能为空')
+    return ElMessage.warning(locales.t('nodeSelect.name_cant_null'))
   }
   const res = await modNameModel.add(modAddNameTemp.value)
 
   if (res.state == 0) {
     return ElMessage.warning(res.msg)
   }
-  ElMessage.success('添加成功')
+  ElMessage.success(locales.t('words.add_success'))
   modAddDialogVisible.value = false
   await getNodeTree()
 }
@@ -645,16 +641,16 @@ async function showCategoryAdd() {
 async function saveCategoryAdd() {
   const { name, modNameId } = categoryAddTemp.value
   if (!name) {
-    return ElMessage.warning("请输入名称")
+    return ElMessage.warning(locales.t('nodeSelect.pls_input_name'))
   }
   if (!modNameId) {
-    return ElMessage.warning("请选择分类")
+    return ElMessage.warning(locales.t('nodeSelect.pls_select_category'))
   }
   const res = await categoryNameModel.add(name, modNameId)
   if (res.state == 0) {
     return ElMessage.warning(res.msg)
   }
-  ElMessage.success('添加成功')
+  ElMessage.success(locales.t('words.add_success'))
   categoryAddVisible.value = false
   await getNodeTree()
 }
@@ -676,16 +672,16 @@ async function saveCategoryEdit() {
   const { name } = categoryEditTemp.value
   const categoryId = floatMenu.value.categoryId
   if (!name) {
-    return ElMessage.warning("请输入名称")
+    return ElMessage.warning(locales.t('nodeSelect.pls_input_name'))
   }
   if (!categoryId) {
-    return ElMessage.warning("无效id")
+    return ElMessage.warning(locales.t('nodeSelect.invalid_id'))
   }
   const res = await categoryNameModel.update(categoryId, name)
   if (res.state == 0) {
     return ElMessage.warning(res.msg)
   }
-  ElMessage.success('修改成功')
+  ElMessage.success(locales.t('nodeSelect.change_success'))
   categoryEditVisible.value = false
   floatMenu.value.categoryId = null
   await getNodeTree()
@@ -708,16 +704,16 @@ async function saveModEdit() {
   const { name } = modEditTemp.value
   const modId = floatMenu.value.modId
   if (!name) {
-    return ElMessage.warning("请输入名称")
+    return ElMessage.warning(locales.t('nodeSelect.pls_input_name'))
   }
   if (!modId) {
-    return ElMessage.warning("无效id")
+    return ElMessage.warning(locales.t('nodeSelect.invalid_id'))
   }
   const res = await modNameModel.update(modId, name)
   if (res.state == 0) {
     return ElMessage.warning(res.msg)
   }
-  ElMessage.success('修改成功')
+  ElMessage.success(locales.t('nodeSelect.change_success'))
   modEditVisible.value = false
   floatMenu.value.modId = null
   await getNodeTree()
@@ -918,7 +914,7 @@ function onRefresh(event) {
     // 调用相应的函数
     console.log('Ctrl、Shift 和 F ')
     getNodeTree().then(res => {
-      ElMessage.success('节点刷新完成')
+      ElMessage.success(locales.t('nodeSelect.node_refresh_success'))
     })
   }
 }

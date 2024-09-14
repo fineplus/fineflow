@@ -59,7 +59,7 @@ export function centerRouter(vertices, args, view) {
 
 export function makeDefaultNode(): Node {
     return {
-        func: {code: "", lang: "python"}, input: [], output: [],
+        func: {code: "", lang: "javascript"}, input: [], output: [],
         id: "",
         name: "",
         key: generateID(),

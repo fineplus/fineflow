@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker v-model="value" :size="size" type="datetime" placeholder="选择时间" value-format="YYYY-MM-DD HH:mm:ss"
+  <el-date-picker v-model="value" :size="size" type="datetime" :placeholder="$t('words.select_time')" value-format="YYYY-MM-DD HH:mm:ss"
     :default-value="new Date()" :disabled="disabled" />
 </template>
 
