@@ -44,6 +44,7 @@ export const message = {
         "premature_termination_of_process":"premature termination of process",
         "in_processing":"in processing",
         "processing":"processing",
+        add_success: 'add success',
     },
     portTooltip: {
         key: 'key',

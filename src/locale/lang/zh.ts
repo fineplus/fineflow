@@ -44,6 +44,7 @@ export const message = {
         "premature_termination_of_process":"提前终止流程",
         "in_processing":"正在执行",
         "processing":"执行中",
+        add_success: '添加成功',
 
     },
     portTooltip: {
