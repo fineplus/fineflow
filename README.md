@@ -11,7 +11,7 @@
 <a href="https://github.com/fineplus/fineflow/releases/tag/fineflow"><strong>download</strong></a>
 <a>|</a>
 <a href="https://www.bilibili.com/video/BV1Nx4y1Y7HH"><strong>video</strong></a>
-
+![Project Preview](./publick/preview.jpg)
 
 </div>
 
