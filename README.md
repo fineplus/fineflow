@@ -1,4 +1,3 @@
-![Project Preview](./public/preview.jpg)
 <!-- PROJECT LOGO -->
 
 
