@@ -1,3 +1,4 @@
+![Project Preview](./public/preview.jpg)
 <!-- PROJECT LOGO -->
 
 
@@ -30,7 +31,7 @@
     </div>
 </div>
 
-![Project Preview](./public/preview.jpg)
+
 
 # 2. Development
 
