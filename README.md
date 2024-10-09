@@ -1,5 +1,6 @@
 <!-- PROJECT LOGO -->
 
+
 <div align="center">
   <a href="https://github.com/fineplus/fineflow">
     <img src="https://fineplus.github.io/fineflow-home/logo.png" alt="Logo" width="180" height="180">
@@ -11,7 +12,7 @@
 <a href="https://github.com/fineplus/fineflow/releases/tag/fineflow"><strong>download</strong></a>
 <a>|</a>
 <a href="https://www.bilibili.com/video/BV1Nx4y1Y7HH"><strong>video</strong></a>
-![Project Preview](./publick/preview.jpg)
+
 
 </div>
 
@@ -29,7 +30,7 @@
     </div>
 </div>
 
-
+![Project Preview](./public/preview.jpg)
 
 # 2. Development
 
