@@ -144,6 +144,12 @@
     "fs:write-all",
     "fs:write-files",
     "fs:allow-create",
+    "http:allow-fetch",
+    "http:default",
+    {
+      "identifier": "http:default",
+      "allow": [{ "url": "https://*:*" },{ "url": "http://*:*" }]
+    },
     {
       "identifier": "shell:allow-execute",
       "allow": [

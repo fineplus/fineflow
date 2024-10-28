@@ -41,12 +41,13 @@ import { fineTools } from "@/components/api-flow/engine/fine-tools";
 import * as tauri_api from '@tauri-apps/api'
 import * as dialog from '@tauri-apps/plugin-dialog'
 import * as fs from '@tauri-apps/plugin-fs'
+import {systemConfigStore} from "@/components/api-flow/engine/store";
 window.tauri = {
   api: tauri_api,
   dialog,
   fs
 }
-
+window.systemConfigStore=systemConfigStore
 
 //@ts-ignore
 // if (!import.meta.env.USE_CDN) {
