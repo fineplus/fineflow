@@ -11,6 +11,7 @@ import { javascript } from '@codemirror/lang-javascript'
 import { python } from '@codemirror/lang-python'
 import { vue } from '@codemirror/lang-vue'
 import { css } from '@codemirror/lang-css'
+import { json } from '@codemirror/lang-json'
 import { oneDark } from '@codemirror/theme-one-dark'
 
 
@@ -18,11 +19,13 @@ const JsExtensions = [javascript(), oneDark]
 const pyExtensions = [python(), oneDark]
 const vueExtensions = [vue(), oneDark]
 const cssExtensions = [css(), oneDark]
+const jsonExtensions = [json(), oneDark]
 const extensionsMap = {
   css: cssExtensions,
   javascript: JsExtensions,
   vue: vueExtensions,
   python: pyExtensions,
+  json: jsonExtensions,
 }
 const defaultCode = {
   javascript: `{
@@ -37,6 +40,7 @@ const defaultCode = {
   `,
   vue: "<div></div>",
   python: "",
+  json:"{}",
   css: `.class-name{
   color:white;
 }`,
@@ -44,7 +48,7 @@ const defaultCode = {
 const extensions = computed(() => {
   return extensionsMap[props.lang]
 })
-const props = defineProps<{ lang: 'css' | 'javascript' | 'vue' | "python", placeholder?: string, default?: string, modelValue?: string }>()
+const props = defineProps<{ lang: 'css' | 'javascript' | 'vue' | "python"|"json", placeholder?: string, default?: string, modelValue?: string }>()
 // Codemirror EditorView instance ref
 const view = shallowRef()
 const handleReady = (payload) => {

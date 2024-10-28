@@ -133,6 +133,7 @@ export const message = {
         node_refresh_success:"node refresh success",
     },
     nodeEditor: {
+        source:"source",
         input_params: "input params",
         output_params: "output params",
         node_name: "node name",

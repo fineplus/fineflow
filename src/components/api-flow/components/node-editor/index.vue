@@ -8,7 +8,7 @@
               <div class="h-full flex flex-col">
                 <div class="h-full">
                   <div v-if="isSeverNode" class="comp-overlay"></div>
-                  <input-param-config v-model:inputs="node.input" />
+                  <input-param-config v-model:inputs="node.input"/>
                 </div>
               </div>
             </el-tab-pane>
@@ -16,7 +16,7 @@
               <div class="h-full flex flex-col">
                 <div class="h-full">
                   <div v-if="isSeverNode" class="comp-overlay"></div>
-                  <output-param-config v-model:outputs="node.output" />
+                  <output-param-config v-model:outputs="node.output"/>
                 </div>
               </div>
             </el-tab-pane>
@@ -25,7 +25,7 @@
         <div class="flex-1">
           <div class="node-config-item">
             <div class="node-config-item__label ">
-              {{$t('nodeEditor.node_name')}}
+              {{ $t('nodeEditor.node_name') }}
             </div>
             <div class="node-config-item__right">
               <el-input style="width: 12rem" size="small" v-model="node.name" placeholder="请输入节点名称"></el-input>
@@ -34,7 +34,7 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                {{$t('nodeEditor.node_height')}}
+                {{ $t('nodeEditor.node_height') }}
               </div>
               <div class="node-config-item__right ">
                 <el-input style="width: 4rem" size="small" v-model="node.ui.height"></el-input>
@@ -42,7 +42,7 @@
             </div>
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                {{$t('nodeEditor.node_width')}}
+                {{ $t('nodeEditor.node_width') }}
               </div>
               <div class="node-config-item__right">
                 <el-input style="width: 4rem" size="small" v-model="node.ui.width"></el-input>
@@ -52,39 +52,39 @@
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                {{$t('nodeEditor.title_background')}}
+                {{ $t('nodeEditor.title_background') }}
               </div>
               <div class="node-config-item__right flex-c">
-                <el-color-picker v-model="node.ui.titleBg" show-alpha />
+                <el-color-picker v-model="node.ui.titleBg" show-alpha/>
               </div>
             </div>
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                {{$t('nodeEditor.title_text')}}
+                {{ $t('nodeEditor.title_text') }}
               </div>
               <div class="node-config-item__right flex-c">
-                <el-color-picker v-model="node.ui.titleColor" show-alpha />
-              </div>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="node-config-item flex-1">
-              <div class="node-config-item__label ">
-                {{$t('nodeEditor.node_background')}}
-              </div>
-              <div class="node-config-item__right flex-c">
-                <el-color-picker v-model="node.ui.bg" show-alpha />
+                <el-color-picker v-model="node.ui.titleColor" show-alpha/>
               </div>
             </div>
           </div>
           <div class="flex">
             <div class="node-config-item flex-1">
               <div class="node-config-item__label ">
-                {{$t('nodeEditor.node_description')}}
+                {{ $t('nodeEditor.node_background') }}
+              </div>
+              <div class="node-config-item__right flex-c">
+                <el-color-picker v-model="node.ui.bg" show-alpha/>
+              </div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="node-config-item flex-1">
+              <div class="node-config-item__label ">
+                {{ $t('nodeEditor.node_description') }}
               </div>
               <div class="node-config-item__right flex-c !px-0 m-0 flex-1">
                 <el-input class="node-des" v-model="node.des" style="height:4rem;border: none;width: 100%;"
-                  type="textarea"></el-input>
+                          type="textarea"></el-input>
               </div>
             </div>
           </div>
@@ -92,17 +92,20 @@
       </div>
       <div class="flex-1 min-w-[20rem] min-h-[20rem] flex flex-col p-2 pt-1" style="background: #31333c">
         <div class="shadow py-1 px-2 mb-2 flex" style="background: #3b3d45;border-radius: 0.5rem">
-          <el-button size="small" @click="leftBarVisible = !leftBarVisible">{{ leftBarVisible ? $t('nodeEditor.hide_param_panel') :
-              $t('nodeEditor.show_param_panel') }}</el-button>
+          <el-button size="small" @click="leftBarVisible = !leftBarVisible">{{
+              leftBarVisible ? $t('nodeEditor.hide_param_panel') :
+                  $t('nodeEditor.show_param_panel')
+            }}
+          </el-button>
 
           <div class="ml-auto">
-            <el-button size="small">{{$t('nodeEditor.execute')}}</el-button>
-            <el-button size="small" @click="saveNode">{{$t('nodeEditor.save')}}</el-button>
-            <el-button size="small" @click="emits('cancel')">{{$t('nodeEditor.return')}}</el-button>
-            <el-button size="small" @click="reloadNode">{{$t('nodeEditor.reload')}}</el-button>
+            <el-button size="small">{{ $t('nodeEditor.execute') }}</el-button>
+            <el-button size="small" @click="saveNode">{{ $t('nodeEditor.save') }}</el-button>
+            <el-button size="small" @click="emits('cancel')">{{ $t('nodeEditor.return') }}</el-button>
+            <el-button size="small" @click="reloadNode">{{ $t('nodeEditor.reload') }}</el-button>
           </div>
         </div>
-        <div class="font-bold text-center node-preview-title">{{$t('nodeEditor.node_preview')}}</div>
+        <div class="font-bold text-center node-preview-title">{{ $t('nodeEditor.node_preview') }}</div>
         <div class="flex-1 node-preview-container">
           <div style="width: 100%;height: 100%">
             <div :id="containerId" style="width: 100%;height: 100%"></div>
@@ -114,11 +117,15 @@
           <el-tabs v-model="editorConf.component.topPaneActive" class="flex flex-col h-full">
             <el-tab-pane :label="$t('nodeEditor.component')" name="component" class="h-full pb-2">
               <code-editor lang="vue" :placeholder="$t('nodeEditor.template_code')" v-model="node.ui.component"
-                :default="vueDefaultCode"></code-editor>
+                           :default="vueDefaultCode"></code-editor>
             </el-tab-pane>
 
             <el-tab-pane :label="$t('nodeEditor.function')" name="function" class="h-full pb-2">
-              <func-editor v-model:function="node.func" :api-node="node" />
+              <func-editor v-model:function="node.func" :api-node="node"/>
+            </el-tab-pane>
+            <el-tab-pane :label="$t('nodeEditor.source')" class="h-full pb-2">
+              <code-editor lang="json" :placeholder="$t('nodeEditor.template_code')" @update:model-value="updateContent" :model-value="nodeContent"
+                           ></code-editor>
             </el-tab-pane>
           </el-tabs>
         </div>
@@ -127,22 +134,22 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, onActivated, onBeforeMount, onMounted, provide, ref, watch } from "vue";
-import { FlowEditor } from "@/components/api-flow/engine/editor";
-import { copy, generateID } from "@/components/api-flow/common-utils";
-import type { Node } from "@/components/api-flow/engine/types";
-import { register } from "@antv/x6-vue-shape";
-import { vueNodeConfig } from "@/components/api-flow/engine/config";
+import {computed, onActivated, onBeforeMount, onMounted, provide, ref, watch} from "vue";
+import {FlowEditor} from "@/components/api-flow/engine/editor";
+import {copy, generateID} from "@/components/api-flow/common-utils";
+import type {Node} from "@/components/api-flow/engine/types";
+import {register} from "@antv/x6-vue-shape";
+import {vueNodeConfig} from "@/components/api-flow/engine/config";
 import VueNode from "@/components/api-flow/components/vue-node/vue-node.vue";
 import CodeEditor from "@/components/api-flow/components/node-editor/components/code-editor.vue";
-import { Delete, Edit, Plus } from "@element-plus/icons-vue";
+import {Delete, Edit, Plus} from "@element-plus/icons-vue";
 import InputParamConfig
   from "@/components/api-flow/components/node-editor/components/node-param-config/input-param-config.vue";
 import OutputParamConfig
   from "@/components/api-flow/components/node-editor/components/node-param-config/output-param-config.vue";
 import FuncEditor from "@/components/api-flow/components/node-editor/components/func-editor.vue";
-import { makeDefaultNode } from "@/components/api-flow/engine/utils";
-import { vueDefaultCode } from "./components/config"
+import {makeDefaultNode} from "@/components/api-flow/engine/utils";
+import {vueDefaultCode} from "./components/config"
 //@ts-ignore
 register({
   ...vueNodeConfig,
@@ -162,11 +169,26 @@ const editorConf = ref({
     active: 'input',//input output
   }
 })
-
+const updateContent=(val)=>{
+  const data=JSON.parse(val)
+  const id=node.value.id
+  const key=node.value.key
+  if(Object.keys(data).length>0){
+    node.value=data
+    node.value.id=id
+    node.value.key=key
+  }
+}
 
 const containerId = ref('node-editor-preview' + generateID())
 const node = ref<Node>(makeDefaultNode())
-
+const nodeContent = ref("")
+watch(() => node.value, () => {
+  const data=JSON.parse(JSON.stringify(node.value))
+  delete data['id']
+  delete data['key']
+  nodeContent.value = JSON.stringify(data,null,2)
+},{deep:true,immediate:true})
 const isSeverNode = computed(() => node.value.serverKey)
 onBeforeMount(() => {
   containerId.value = 'node-editor-preview-' + generateID()
@@ -185,7 +207,7 @@ const reloadNode = () => {
 
 }
 
-function intoNodeEdit({ node, parentKey }) {
+function intoNodeEdit({node, parentKey}) {
   setNode(node)
   nodeParentKey.value = parentKey
   nodeListManagerVisible.value = false
@@ -193,13 +215,13 @@ function intoNodeEdit({ node, parentKey }) {
 
 
 function saveNode() {
-  emits('update:node', { ...node.value, preview: undefined })
+  emits('update:node', {...node.value, preview: undefined})
 }
 
 
 onMounted(() => {
   if (!node.value.func) {
-    node.value.func = { code: "", lang: "javascript" }
+    node.value.func = {code: "", lang: "javascript"}
   }
   setTimeout(() => {
     editor = new FlowEditor(containerId.value)
@@ -215,7 +237,7 @@ function setNode(newNode: Node) {
     editor?.render.graph.clearCells()
     node.value = copy(newNode)
     if (!node.value.func) {
-      node.value.func = { lang: 'javascript', code: '' }
+      node.value.func = {lang: 'javascript', code: ''}
     }
     node.value.preview = true
 
@@ -225,7 +247,7 @@ function setNode(newNode: Node) {
 
 }
 
-defineExpose({ setNode })
+defineExpose({setNode})
 </script>
 <style scoped lang="scss">
 .node-preview-container {

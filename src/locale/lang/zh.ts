@@ -135,6 +135,7 @@ export const message = {
         node_refresh_success:"节点刷新完成",
     },
     nodeEditor: {
+        source:"源码",
         input_params: "输入参数",
         output_params: "输出参数",
         node_name: "节点名称",
