@@ -1,4 +1,5 @@
 <template>
+<div class="h-full w-full fixed">
   <div class="node-graph" :id="pid" :style="{ background: node?.ui?.bg,...boxShadowStyle }">
     <div ref="nodeTopRef" class="node-top" sign="node-clicked" :style="{ background: node?.ui?.titleBg }">
       <div :style="{ color: node?.ui?.titleColor }" sign="node-clicked">
@@ -34,6 +35,7 @@
     <div class="resize-tool " :style="resizeToolSizeStyle" @dragstart.stop @mousemove.stop @mousedown.stop="startResize"
          @mouseleave.stop="stopResize">
     </div>
+  </div>
   </div>
 </template>
 
