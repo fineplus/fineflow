@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <component class="node-component" ref="nodeCompRef" :is="components.dynamicComp" :data="{ node }"
+      <component class="node-component" ref="nodeCompRef" :is="components.dynamicComp" :node="node"
                  :state="nodeState"
                  :inputs="inputs" :user-inputs="userInputs" v-if="showDynamicComponent"
                  @update:input="(key, value) => userInputs[key] = value" :outputs="outputs"

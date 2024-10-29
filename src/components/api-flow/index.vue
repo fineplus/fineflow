@@ -259,9 +259,10 @@ async function runFlow() {
   }
 
 }
-
-function runStartAtNode() {
-  flowEditor?.runStartAtNode(floatMenu.value.cellId, (nodeId) => {
+window.runFlow=runFlow
+window.runStartAtNode=runStartAtNode
+function runStartAtNode(cellId) {
+  flowEditor?.runStartAtNode(cellId||floatMenu.value.cellId, (nodeId) => {
   })
 }
 
