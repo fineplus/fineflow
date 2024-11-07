@@ -1,13 +1,6 @@
 import {BaseDirectory, exists, writeFile, create} from '@tauri-apps/plugin-fs';
 import sql from "@tauri-apps/plugin-sql"
 
-async function loadBinaryFile() {
-    const response = await fetch('/fineflow.db');
-    const arrayBuffer = await response.arrayBuffer();
-    // 将 arrayBuffer 转换为 Uint8Array
-    return new Uint8Array(arrayBuffer);
-}
-
 export const allDb = {db: null}
 
 export async function loadDb() {
